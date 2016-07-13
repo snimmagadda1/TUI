@@ -3,7 +3,7 @@
 #include <ncurses.h>
 #include <string.h>
 #include <panel.h>
-
+#include "executeShell.h"
 
 
 /* This is a basic terminal TUI for the Pulse Appliance */
@@ -11,6 +11,9 @@ int row, col;
 
 /* initialization of functions */
 void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleCol);
+
+
+
 
 int main(int argc, char *argv[]){
     WINDOW *my_wins[3];
@@ -28,7 +31,8 @@ int main(int argc, char *argv[]){
     my_panels[1]=new_panel(my_wins[1]);
     update_panels();
     doupdate();
-   
+  
+    
     getch();
     endwin();
 
@@ -41,3 +45,5 @@ void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleC
    *middleCol= *col/2;
 
 }
+
+
