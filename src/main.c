@@ -29,10 +29,12 @@ int main(int argc, char *argv[]){
     init_pair(1, COLOR_BLACK, COLOR_GREEN);
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
     
-    /* Initialize the top left and right windows */
+    /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
-    my_wins[2] = newwin((row*.35)-5, col-10,30, 5);
+    int rowStart = getmaxy(my_wins[0]);
+    rowStart-=1;
+    my_wins[2] = newwin((row*.35)-1, col-10,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
     my_panels[1] = new_panel(my_wins[1]);
     my_panels[2] = new_panel(my_wins[2]);
