@@ -23,12 +23,21 @@ int main(int argc, char *argv[]){
     cbreak();                                   /* read in characters as they are typed */
     noecho();                                   /* do not display the users input on cursor */
     getDimensions(stdscr, &row, &col, &middleRow, &middleCol); 
+    
+    /* Initialize color pairs that will be used in TUI */
+    start_color();
+    init_pair(1, COLOR_BLACK, COLOR_BLUE);
+
     my_wins[0] = newwin((row*.5)-5, (col*.5)-5,0,5);
     my_wins[1] = newwin((row*.5)-5, (col*.5)-5,0,middleCol);
     box(my_wins[0],0,0);
     box(my_wins[1],0,0);
+    wbkgd(my_wins[0], COLOR_PAIR(1));
     my_panels[0]=new_panel(my_wins[0]);
     my_panels[1]=new_panel(my_wins[1]);
+    
+    
+
     update_panels();
     doupdate();
   
