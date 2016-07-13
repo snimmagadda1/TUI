@@ -4,7 +4,7 @@
 #include <string.h>
 #include <panel.h>
 #include "executeShell.h"
-
+#include "drawBorders.h"
 
 /* This is a basic terminal TUI for the Pulse Appliance */
 int row, col;
@@ -28,21 +28,21 @@ int main(int argc, char *argv[]){
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_GREEN);
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
-    
+
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
     int rowStart = getmaxy(my_wins[0]);
     rowStart-=1;
-    my_wins[2] = newwin((row*.35)-1, col-10,rowStart, 5);
+    my_wins[2] = newwin((row*.45)-1, col-10,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
     my_panels[1] = new_panel(my_wins[1]);
     my_panels[2] = new_panel(my_wins[2]);
-    box(my_wins[2], 0,0);
+    drawBorders(my_wins[2]);
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
-    
+
     
     
 
@@ -60,7 +60,6 @@ void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleC
    getmaxyx(win, *row, *col);
    *middleRow = *row/2;
    *middleCol= *col/2;
-
 }
 
 
