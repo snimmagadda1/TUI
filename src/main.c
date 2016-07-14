@@ -83,7 +83,7 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     getbegyx(win, begy, begx);
     getmaxyx(win, endy, endx);
     mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
-    mvwprintw(win, 3, 0, "Interface:");
+    mvwprintw(win, 3, 1, "Interface:");
     wrefresh(win);
 }
 
