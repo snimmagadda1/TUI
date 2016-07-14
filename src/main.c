@@ -84,6 +84,10 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     getmaxyx(win, endy, endx);
     mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
     mvwprintw(win, 3, 1, "Interface:");
+    mvwprintw(win, 4, 1, "IP Address:");
+    mvwprintw(win, 5, 1, "Netmask:");
+    mvwprintw(win, 6, 1, "Gateway:");
+    mvwprintw(win, 7, 1, "DNS:");
     wrefresh(win);
 }
 
