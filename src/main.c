@@ -52,8 +52,13 @@ int main(int argc, char *argv[]){
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
+
+    /* Display information in Network and System Winsows */
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displaySystemWindow(my_wins[0]);
+    attron(A_REVERSE);
+    mvprintw(row-2,5,"Press F1 to exit");
+    attroff(A_REVERSE);
     update_panels();
     doupdate();
     
