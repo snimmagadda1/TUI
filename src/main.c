@@ -13,7 +13,7 @@ int row, col;
 /* initialization of functions */
 void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleCol);
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns);
-
+void displaySystemWindow(WINDOW *win);
 
 
 int main(int argc, char *argv[]){
@@ -52,7 +52,8 @@ int main(int argc, char *argv[]){
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
-    mvwprintw(my_wins[0], 0,0, "%s", ipaddress);
+    displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
+    displaySystemWindow(my_wins[0]);
     update_panels();
     doupdate();
     
@@ -72,7 +73,18 @@ void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleC
 
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns)
 {
+    int begy, begx, endy, endx;
+    getbegyx(win, begy, begx);
+    getmaxyx(win, endy, endx);
+    mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
+    wrefresh(win);
+}
 
+void displaySystemWindow(WINDOW *win)
+{
+    int endy, endx;
+    getmaxyx(win, endy, endx);
+    mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
 }
 
 
