@@ -70,13 +70,13 @@ int main(int argc, char *argv[]){
     endwin();
     return 0;
 }
-
+    /* function to get the dimensions of a window */
 void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleCol){
    getmaxyx(win, *row, *col);
    *middleRow = *row/2;
    *middleCol= *col/2;
 }
-
+    /* function to update the network window with appropriate values */
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns)
 {
     int begy, begx, endy, endx;
@@ -84,13 +84,18 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     getmaxyx(win, endy, endx);
     mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
     mvwprintw(win, 3, 1, "Interface:");
+    mvwprintw(win, 3, 15, "%s", iface);
     mvwprintw(win, 4, 1, "IP Address:");
+    mvwprintw(win, 4, 15, "%s", ipaddress);
     mvwprintw(win, 5, 1, "Netmask:");
+    mvwprintw(win, 5, 15, "%s", netmask);
     mvwprintw(win, 6, 1, "Gateway:");
+    mvwprintw(win, 6, 15, "%s", gateway);
     mvwprintw(win, 7, 1, "DNS:");
+    mvwprintw(win, 7, 15, "%s", dns);
     wrefresh(win);
 }
-
+    /* function to update the system window with appropriate values */
 void displaySystemWindow(WINDOW *win)
 {
     int endy, endx;
