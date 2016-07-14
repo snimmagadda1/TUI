@@ -29,6 +29,7 @@ int main(int argc, char *argv[]){
     /* read network information file and extrapolate useful information */
     FILE *fp;
     fp = fopen("/home/snimmagadda/Documents/TUI/lib/interfaces","r");
+    //fp = fopen("/etc/network/interfaces","r");
     char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255];
     getNetworkInfo(fp, iface, ipaddress, netmask, gateway, dns);     
     fclose(fp);
@@ -82,6 +83,7 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     getbegyx(win, begy, begx);
     getmaxyx(win, endy, endx);
     mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
+    mvwprintw(win, 3, 0, "Interface:");
     wrefresh(win);
 }
 
