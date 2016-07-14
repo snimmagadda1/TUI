@@ -33,8 +33,9 @@ int main(int argc, char *argv[]){
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
     int rowStart = getmaxy(my_wins[0]);
-    rowStart-=1;
-    my_wins[2] = newwin((row*.45)-1, col-10,rowStart, 5);
+    int colEnd = getmaxx(my_wins[1]);
+    rowStart+=4;
+    my_wins[2] = newwin((row-rowStart)-3, col-10,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
     my_panels[1] = new_panel(my_wins[1]);
     my_panels[2] = new_panel(my_wins[2]);
@@ -42,9 +43,13 @@ int main(int argc, char *argv[]){
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
-
     
     
+    char* file = "/etc/network/interfaces";
+    FILE* pFile = fopen(file, "r");
+    char buff[225];
+    fgets(buff, 254, pFile);
+    mvwprintw(my_wins[0],0,0,buff);
 
     update_panels();
     doupdate();
