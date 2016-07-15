@@ -64,7 +64,6 @@ int main(){
     displaySystemWindow(my_wins[0]);
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displayBottomWindow(my_wins[2], totalDisk, availDisk);
-    printAsciiLogo(my_wins[0], 5, 1);
     attron(A_REVERSE);
     mvprintw(row-2,5,"[F1 Exit]");
     attroff(A_REVERSE);
@@ -110,6 +109,8 @@ void displaySystemWindow(WINDOW *win)
     getmaxyx(win, endy, endx);
     mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
     mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
+    printAsciiLogo(win, 5, 1);
+    mvwprintw(win, 5, 13,"License:");
     wrefresh(win);
 }
 
