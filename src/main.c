@@ -58,7 +58,7 @@ int main(){
     mvprintw(rowStart+3, (col -strlen("System Information"))/2,"System Information");       /* Print title of Window */
     mvprintw(rowStart+2, (col -strlen("pulse.rlpulse.net"))/2, "pulse.rlpulse.net");
     rowStart+=4;
-    my_wins[2] = newwin((row-rowStart)-3, col-10,rowStart, 5);
+    my_wins[2] = newwin((row-rowStart)-3, col-8,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
     my_panels[1] = new_panel(my_wins[1]);
     my_panels[2] = new_panel(my_wins[2]);
@@ -201,6 +201,8 @@ void printPulse(WINDOW *win, int starty, int startx)
         mvwprintw(win, starty, startx+i,"-");
         mvwprintw(win, starty, startx+38+i,"-");
     }
+    mvwprintw(win, starty, startx+38+25+1,"-");
+    mvwprintw(win, starty, startx+38+25+2,"-");
 
     /*make up and down*/
     mvwprintw(win, starty, startx+26, "/");
