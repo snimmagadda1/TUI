@@ -44,7 +44,9 @@ int main(){
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
-    int rowStart = getmaxy(my_wins[0]);
+    int rowStart = getmaxy(my_wins[0]);                                                     /* For later formatting */
+    mvprintw(rowStart+3, (col -strlen("System Information"))/2,"System Information");       /* Print title of Window */
+    mvprintw(rowStart+2, (col -strlen("pulse.rlpulse.net"))/2, "pulse.rlpulse.net");
     rowStart+=4;
     my_wins[2] = newwin((row-rowStart)-3, col-10,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
@@ -55,6 +57,17 @@ int main(){
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
+
+
+    /* bullshit*/
+    int k=0;
+    attron(A_REVERSE);
+    for(k=3; k<15; k++)
+    {
+        mvwprintw(my_wins[0], k,2, "ENGLAND CANT PLAY THE SPORT THEY INVENTED");
+    }
+    attroff(A_REVERSE);
+
 
     /* Display information in Network and System Winsows */
     displaySystemWindow(my_wins[0]);
