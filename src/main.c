@@ -61,7 +61,7 @@ int main(){
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displayBottomWindow(my_wins[2], totalDisk, availDisk);
     attron(A_REVERSE);
-    mvprintw(row-2,5,"Press F1 to exit");
+    mvprintw(row-2,5,"[F1 Exit]");
     attroff(A_REVERSE);
     update_panels();
     doupdate();
@@ -110,6 +110,12 @@ void displaySystemWindow(WINDOW *win)
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
 {
     mvwprintw(win, 1,2,"Disk");
-    mvwprintw(win, 1,10,"|");
+    mvwprintw(win, 1,15,"|");
+    
+    mvwprintw(win, 2,2, "Swap");
+    mvwprintw(win, 2, 15, "|");
+
+    mvwprintw(win, 3, 2, "Memory");
+    mvwprintw(win, 3, 15, "|");
     wrefresh(win);
 }
