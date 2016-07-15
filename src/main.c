@@ -196,17 +196,23 @@ void printPulse(WINDOW *win, int starty, int startx)
 {
     int i;
     /* left horizontal line */
-    for(i=0;i<27;i++)
+    for(i=0;i<26;i++)
     {
         mvwprintw(win, starty, startx+i,"-");
+        mvwprintw(win, starty, startx+38+i,"-");
     }
 
     /*make up and down*/
+    mvwprintw(win, starty, startx+26, "/");
     mvwprintw(win, starty-1, startx+27,"/");
     mvwprintw(win, starty-1, startx+29,"\\");
-    mvwprintw(win, starty+1, startx+30, "\\");
-    mvwprintw(win, starty+2, startx+31, "\\");
-    mvwprintw(win, starty+2, startx+33, "/");
-    mvwprintw(win, starty+1, startx+34,"/");
-    
+    mvwprintw(win, starty, startx+30, "\\");
+    mvwprintw(win, starty+1, startx+31, "\\");
+    mvwprintw(win, starty+2, startx+32, "\\");
+    mvwprintw(win, starty+2, startx+34, "/");
+    mvwprintw(win, starty+1, startx+35,"/");
+    mvwprintw(win, starty, startx+36, "/");
+    mvwprintw(win,starty,startx+37,"-");
+
+
 }
