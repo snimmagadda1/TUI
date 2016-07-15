@@ -11,6 +11,8 @@
 
 
 /* This is a basic terminal TUI for the Pulse Appliance */
+
+/* Initialize row and col for maximum size */
 int row, col;
 
 /* initialization of functions */
@@ -51,6 +53,7 @@ int main(){
     init_pair(1, COLOR_BLACK, COLOR_GREEN); 
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
     init_pair(3, COLOR_WHITE, COLOR_WHITE);
+    
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
@@ -121,7 +124,7 @@ void displaySystemWindow(WINDOW *win)
     mvwprintw(win, 5, 16,"License: Std.");
     wrefresh(win);
 }
-
+    /* function to update the bottom centered window */
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255], char availSwap[255])
 {
     mvwprintw(win, 1,2,"Disk");
@@ -149,7 +152,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     wrefresh(win);
 }
 
-
+    /* function to print Ascii RL logo*/
 void printAsciiLogo(WINDOW *win, int starty, int startx)
 {
     int i;
@@ -192,7 +195,7 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+7, startx+11,"*");
     
 }
-
+/* function to print the pulse heartbeat */
 void printPulse(WINDOW *win, int starty, int startx)
 {
     int i;
