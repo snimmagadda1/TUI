@@ -19,7 +19,7 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
 void displaySystemWindow(WINDOW *win);
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255],char availSwap[255]);
 void printAsciiLogo(WINDOW *win, int starty, int startx);
-
+void printPulse(WINDOW *win, int starty, int startx);
 
 int main(){
     
@@ -144,7 +144,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 3, 23, "%s kB", availRAM);
     mvwprintw(win, 3, 34, "/");
     mvwprintw(win, 3, 36, "%s kB", totalRAM);
-
+    printPulse(win, 5,2);
     wrefresh(win);
 }
 
@@ -190,4 +190,13 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+7, startx+10," ");
     mvwprintw(win, starty+7, startx+11,"*");
     
+}
+
+void printPulse(WINDOW *win, int starty, int startx)
+{
+    int i;
+    for(i=0;i<27;i++)
+    {
+        mvwprintw(win, starty, startx+i,"-");
+    }
 }
