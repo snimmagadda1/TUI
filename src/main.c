@@ -15,6 +15,8 @@ void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleC
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns);
 void displaySystemWindow(WINDOW *win);
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255]);
+void printAsciiLogo(WINDOW *win, int starty, int startx);
+
 
 int main(){
     
@@ -62,6 +64,7 @@ int main(){
     displaySystemWindow(my_wins[0]);
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displayBottomWindow(my_wins[2], totalDisk, availDisk);
+    printAsciiLogo(my_wins[0], 5, 1);
     attron(A_REVERSE);
     mvprintw(row-2,5,"[F1 Exit]");
     attroff(A_REVERSE);
@@ -125,4 +128,15 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
     mvwprintw(win, 3, 2, "Memory");
     mvwprintw(win, 3, 15, "|");
     wrefresh(win);
+}
+
+
+void printAsciiLogo(WINDOW *win, int starty, int startx)
+{
+    int i;
+    // print vertical R line
+    for(i=0; i<10; i++)
+    {
+        mvwprintw(win, starty+i, startx, "|");
+    }
 }
