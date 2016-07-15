@@ -5,7 +5,7 @@
 
 void getSystemDisk( char total[255], char avail[255]);
 char *copySecond1(char *buffer);
-char *copyThird(char *buffer);
+char *copyFourth(char *buffer);
 /*
 int main()
 {
@@ -20,7 +20,7 @@ void getSystemDisk(char total[255], char avail[255])
     FILE *fp;
     bool found=false;
     /* command to be executed */
-    char command[]="df -h > lib/hdisk.txt";
+    char command[]="df -h > lib/disk.txt";
     char buffer[255];
     char buffer2[255];
     system(command);
@@ -34,7 +34,7 @@ void getSystemDisk(char total[255], char avail[255])
         {
             strcpy(buffer2, buffer);
             strcpy(total, copySecond1(buffer));
-            strcpy(avail, copyThird(buffer2));
+            strcpy(avail, copyFourth(buffer2));
             found = true;
         }
         
@@ -48,9 +48,10 @@ char *copySecond1(char *buffer)
     return strtok(NULL, " ");
 }
 
-char *copyThird (char *buffer)
+char *copyFourth (char *buffer)
 {
     strtok(buffer, " ");
     strtok(NULL, " ");
+    strtok(NULL," ");
     return strtok(NULL, " ");
 }

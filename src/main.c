@@ -114,7 +114,11 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
 {
     mvwprintw(win, 1,2,"Disk");
     mvwprintw(win, 1,15,"|");
-    
+    mvwprintw(win, 1, 17,"Free:");
+    mvwprintw(win, 1, 23,"%s",availDisk);
+    mvwprintw(win, 1, 28, "/");
+    mvwprintw(win, 1, 30,"%s",totalDisk);
+
     mvwprintw(win, 2,2, "Swap");
     mvwprintw(win, 2, 15, "|");
 
