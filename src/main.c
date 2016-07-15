@@ -115,7 +115,7 @@ void displaySystemWindow(WINDOW *win)
 {
     int endy, endx;
     getmaxyx(win, endy, endx);
-    mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
+    mvwprintw(win, 1, (endx-strlen("Pulse Information"))/2, "Pulse Information");
     mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
     printAsciiLogo(win, 5, 1);
     mvwprintw(win, 5, 16,"License: Std.");
