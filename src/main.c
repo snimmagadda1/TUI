@@ -58,17 +58,6 @@ int main(){
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
 
-
-    /* bullshit*/
-    int k=0;
-    attron(A_REVERSE);
-    for(k=3; k<15; k++)
-    {
-        mvwprintw(my_wins[0], k,2, "ENGLAND CANT PLAY THE SPORT THEY INVENTED");
-    }
-    attroff(A_REVERSE);
-
-
     /* Display information in Network and System Winsows */
     displaySystemWindow(my_wins[0]);
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
@@ -98,7 +87,7 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     int begy, begx, endy, endx;
     getbegyx(win, begy, begx);
     getmaxyx(win, endy, endx);
-    mvwprintw(win,1, (endx-strlen("Network Information"))/2, "Network Information");
+    mvwprintw(win,1, (endx-strlen("General Information"))/2, "General Information");
     mvwprintw(win, 3, 1, "Interface:");
     mvwprintw(win, 3, 15, "%s", iface);
     mvwprintw(win, 4, 1, "IP Address:");
@@ -117,6 +106,7 @@ void displaySystemWindow(WINDOW *win)
     int endy, endx;
     getmaxyx(win, endy, endx);
     mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
+    mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
     wrefresh(win);
 }
 
