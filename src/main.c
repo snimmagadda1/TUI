@@ -6,7 +6,7 @@
 #include "executeShell.h"
 #include "drawBorders.h"
 #include "getNetworkInfo.h"
-
+#include "getSystemDisk.h"
 /* This is a basic terminal TUI for the Pulse Appliance */
 int row, col;
 
@@ -14,9 +14,10 @@ int row, col;
 void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleCol);
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns);
 void displaySystemWindow(WINDOW *win);
+void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255]);
 
-
-int main(int argc, char *argv[]){
+int main(){
+    
     WINDOW *my_wins[3];
     PANEL *my_panels[3];
     int middleRow, middleCol,ch;                /* initialize the middle row and column locations for later use */
@@ -24,15 +25,16 @@ int main(int argc, char *argv[]){
     cbreak();                                   /* read in characters as they are typed */
     noecho();                                   /* do not display the users input on cursor */
     keypad(stdscr, TRUE);                       /* enable keypad input */
-    getDimensions(stdscr, &row, &col, &middleRow, &middleCol); 
+    getDimensions(stdscr, &row, &col, &middleRow, &middleCol);     
     
     /* read network information file and extrapolate useful information */
     FILE *fp;
     fp = fopen("/home/snimmagadda/Documents/TUI/lib/interfaces","r");
     //fp = fopen("/etc/network/interfaces","r");
-    char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255];
+    char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255], totalDisk[255], availDisk[255];
     getNetworkInfo(fp, iface, ipaddress, netmask, gateway, dns);     
     fclose(fp);
+    getSystemDisk(totalDisk, availDisk);
     
     /* Initialize color pairs that will be used in TUI */
     start_color();
@@ -55,8 +57,9 @@ int main(int argc, char *argv[]){
     wbkgd(my_wins[1], COLOR_PAIR(2));
 
     /* Display information in Network and System Winsows */
-    displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displaySystemWindow(my_wins[0]);
+    displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
+    displayBottomWindow(my_wins[2], totalDisk, availDisk);
     attron(A_REVERSE);
     mvprintw(row-2,5,"Press F1 to exit");
     attroff(A_REVERSE);
@@ -101,6 +104,11 @@ void displaySystemWindow(WINDOW *win)
     int endy, endx;
     getmaxyx(win, endy, endx);
     mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
+    wrefresh(win);
 }
 
-
+void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
+{
+    mvwprintw(win, 1,2,"Disk");
+    wrefresh(win);
+}
