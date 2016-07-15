@@ -134,15 +134,41 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
 void printAsciiLogo(WINDOW *win, int starty, int startx)
 {
     int i;
-    // print horizontal R line
+    // print top horizontal R line
     mvwprintw(win, starty, startx,"*");
     mvwprintw(win, starty, startx+1, " ");
     mvwprintw(win, starty, startx+2, "*");
     mvwprintw(win, starty, startx+3, " ");
     mvwprintw(win, starty, startx+4, "*");
-    // print the vertial R line 
-    for(i=1; i<9; i++)
+    
+    // print the vertial R line  and L vertical line
+    mvwprintw(win, starty, startx+7, "*");
+    for(i=1; i<8; i++)
     {
         mvwprintw(win, starty +i, startx, "*");
+        mvwprintw(win, starty+i, startx+7, "*");
     }
+
+    // print bottom horizontal R line 
+    mvwprintw(win, starty + 3, startx+2, "*");
+    mvwprintw(win, starty + 3, startx+4, "*");
+
+    // print the other vertical R line
+    for(i=1; i<3; i++)
+    {
+        mvwprintw(win, starty +i, startx+4, "*");
+    }
+
+    // print diagonal
+    mvwprintw(win, starty+4, startx+1, "*");
+    mvwprintw(win, starty+5, startx+2, "*");
+    mvwprintw(win, starty+6, startx+3, "*");
+    mvwprintw(win, starty+7, startx+4, "*");
+    
+    // print horizontal l line
+    mvwprintw(win, starty+7, startx+7,"*");
+    mvwprintw(win, starty+7, startx+8,"*");
+    mvwprintw(win, starty+7, startx+9,"*");
+    mvwprintw(win, starty+7, startx+10,"*");
+
 }
