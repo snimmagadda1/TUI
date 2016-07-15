@@ -167,8 +167,9 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     
     // print horizontal l line
     mvwprintw(win, starty+7, startx+7,"*");
-    mvwprintw(win, starty+7, startx+8,"*");
+    mvwprintw(win, starty+7, startx+8," ");
     mvwprintw(win, starty+7, startx+9,"*");
-    mvwprintw(win, starty+7, startx+10,"*");
+    mvwprintw(win, starty+7, startx+10," ");
+    mvwprintw(win, starty+7, startx+11,"*");
 
 }
