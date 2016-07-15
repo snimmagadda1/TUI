@@ -134,9 +134,14 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
 void printAsciiLogo(WINDOW *win, int starty, int startx)
 {
     int i;
-    // print vertical R line
-    for(i=0; i<10; i++)
+    // print horizontal R line
+    for(i=0; i<4; i++)
     {
-        mvwprintw(win, starty+i, startx, "|");
+        mvwprintw(win, starty, startx+i, "-");
+    }
+    // print the vertial R line 
+    for(i=1; i<8; i++)
+    {
+        mvwprintw(win, starty +i, startx, "|");
     }
 }
