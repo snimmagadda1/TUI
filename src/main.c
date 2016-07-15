@@ -195,8 +195,14 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
 void printPulse(WINDOW *win, int starty, int startx)
 {
     int i;
+    /* left horizontal line */
     for(i=0;i<27;i++)
     {
         mvwprintw(win, starty, startx+i,"-");
     }
+
+    /*make up and down*/
+    mvwprintw(win, starty-1, startx+27,"/");
+    mvwprintw(win, starty-1, startx+28,"\\");
+    
 }
