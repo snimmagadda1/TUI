@@ -7,6 +7,9 @@
 #include "drawBorders.h"
 #include "getNetworkInfo.h"
 #include "getSystemDisk.h"
+#include "getSystemMem.h"
+
+
 /* This is a basic terminal TUI for the Pulse Appliance */
 int row, col;
 
@@ -14,7 +17,7 @@ int row, col;
 void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleCol);
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns);
 void displaySystemWindow(WINDOW *win);
-void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255]);
+void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255],char availSwap[255]);
 void printAsciiLogo(WINDOW *win, int starty, int startx);
 
 
@@ -33,16 +36,21 @@ int main(){
     FILE *fp;
     fp = fopen("/home/snimmagadda/Documents/TUI/lib/interfaces","r");
     //fp = fopen("/etc/network/interfaces","r");
-    char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255], totalDisk[255], availDisk[255];
+    char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255], totalDisk[255], availDisk[255], totalRAM[255], totalSwap[255], availRAM[255], availSwap[255];
     getNetworkInfo(fp, iface, ipaddress, netmask, gateway, dns);     
     fclose(fp);
+    
+    /* Read system Disk info and extrapolate */
     getSystemDisk(totalDisk, availDisk);
+
+    /* Read system Ram info and extrapolate */
+    getSystemMem(totalRAM,availRAM,totalSwap,availSwap);
     
     /* Initialize color pairs that will be used in TUI */
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_GREEN); 
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
-
+    init_pair(3, COLOR_WHITE, COLOR_WHITE);
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
@@ -63,7 +71,7 @@ int main(){
     /* Display information in Network and System Winsows */
     displaySystemWindow(my_wins[0]);
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
-    displayBottomWindow(my_wins[2], totalDisk, availDisk);
+    displayBottomWindow(my_wins[2], totalDisk, availDisk, totalRAM, availRAM, totalSwap, availSwap);
     attron(A_REVERSE);
     mvprintw(row-2,5,"[F1 Exit]");
     attroff(A_REVERSE);
@@ -110,22 +118,26 @@ void displaySystemWindow(WINDOW *win)
     mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
     mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
     printAsciiLogo(win, 5, 1);
-    mvwprintw(win, 5, 13,"License:");
+    mvwprintw(win, 5, 14,"License: Std.");
     wrefresh(win);
 }
 
-void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
+void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255], char availSwap[255])
 {
     mvwprintw(win, 1,2,"Disk");
     mvwprintw(win, 1,15,"|");
     mvwprintw(win, 1, 17,"Free:");
     mvwprintw(win, 1, 23,"%s",availDisk);
-    mvwprintw(win, 1, 28, "/");
-    mvwprintw(win, 1, 30,"%s",totalDisk);
+    mvwprintw(win, 1, 29, "/");
+    mvwprintw(win, 1, 31,"%s",totalDisk);
 
-    mvwprintw(win, 2,2, "Swap");
+    mvwprintw(win, 2, 2, "Swap");
     mvwprintw(win, 2, 15, "|");
-
+    mvwprintw(win, 2, 17, "Free:");
+    mvwprintw(win, 2, 23,"%s kB", availSwap);
+    mvwprintw(win, 2, 34, "/");
+    mvwprintw(win, 2, 36,"%s kB", totalSwap);
+    
     mvwprintw(win, 3, 2, "Memory");
     mvwprintw(win, 3, 15, "|");
     wrefresh(win);
@@ -172,5 +184,5 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+7, startx+9,"*");
     mvwprintw(win, starty+7, startx+10," ");
     mvwprintw(win, starty+7, startx+11,"*");
-
+    
 }
