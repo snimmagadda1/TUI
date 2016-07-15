@@ -118,7 +118,7 @@ void displaySystemWindow(WINDOW *win)
     mvwprintw(win, 1, (endx-strlen("System Information"))/2, "System Information");
     mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
     printAsciiLogo(win, 5, 1);
-    mvwprintw(win, 5, 14,"License: Std.");
+    mvwprintw(win, 5, 16,"License: Std.");
     wrefresh(win);
 }
 
@@ -140,6 +140,11 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     
     mvwprintw(win, 3, 2, "Memory");
     mvwprintw(win, 3, 15, "|");
+    mvwprintw(win, 3, 17, "Free:");
+    mvwprintw(win, 3, 23, "%s kB", availRAM);
+    mvwprintw(win, 3, 34, "/");
+    mvwprintw(win, 3, 36, "%s kB", totalRAM);
+
     wrefresh(win);
 }
 
