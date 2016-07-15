@@ -110,5 +110,6 @@ void displaySystemWindow(WINDOW *win)
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255])
 {
     mvwprintw(win, 1,2,"Disk");
+    mvwprintw(win, 1,10,"|");
     wrefresh(win);
 }

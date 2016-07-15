@@ -12,15 +12,19 @@ void drawBorders( WINDOW *win)
     mvwprintw(win,y-1, x-1, "+");
 
     /* sides */
+    
     for(i=1; i<(y-1); i++)
     {
         mvwprintw(win, i, 0, "|");
         mvwprintw(win, i,x-1, "|");
     }
+    
     /*top and bottom */
+    
     for(i=1; i<(x-1); i++)
     {
         mvwprintw(win,0,i,"-"); 
         mvwprintw(win, y-1,i,"-");
     }
+    
 }
