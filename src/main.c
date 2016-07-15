@@ -93,7 +93,6 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     mvwprintw(win, 6, 15, "%s", gateway);
     mvwprintw(win, 7, 1, "DNS:");
     mvwprintw(win, 7, 15, "%s", dns);
-    mvwprintw(win, 8, 1, "Gateway Name:"); 
     wrefresh(win);
 }
     /* function to update the system window with appropriate values */
