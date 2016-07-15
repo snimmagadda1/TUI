@@ -137,11 +137,11 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     // print horizontal R line
     for(i=0; i<4; i++)
     {
-        mvwprintw(win, starty, startx+i, "-");
+        mvwprintw(win, starty, startx+i, "*");
     }
     // print the vertial R line 
     for(i=1; i<8; i++)
     {
-        mvwprintw(win, starty +i, startx, "|");
+        mvwprintw(win, starty +i, startx, "*");
     }
 }
