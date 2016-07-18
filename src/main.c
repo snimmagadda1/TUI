@@ -23,6 +23,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
 void printAsciiLogo(WINDOW *win, int starty, int startx);
 void printPulse(WINDOW *win, int starty, int startx);
 
+
 int main(){
     
     WINDOW *my_wins[3];
