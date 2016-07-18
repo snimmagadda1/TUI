@@ -32,6 +32,7 @@ int main(){
     initscr();                                  /* initialize the ncurses window and standard screen */
     cbreak();                                   /* read in characters as they are typed */
     noecho();                                   /* do not display the users input on cursor */
+    curs_set(0);
     keypad(stdscr, TRUE);                       /* enable keypad input */
     getDimensions(stdscr, &row, &col, &middleRow, &middleCol);     
     
