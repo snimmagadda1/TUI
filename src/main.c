@@ -86,6 +86,7 @@ int main(){
     while((ch = getch()) != KEY_F(1))
     {
     }
+    system("clear");
     endwin();
     return 0;
 }
