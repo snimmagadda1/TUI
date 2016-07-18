@@ -195,7 +195,7 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+7, startx+9,"*");
     mvwprintw(win, starty+7, startx+10," ");
     mvwprintw(win, starty+7, startx+11,"*");
-    
+    mvwprintw(win, starty+7, startx+13,"*");
 }
 /* function to print the pulse heartbeat */
 void printPulse(WINDOW *win, int starty, int startx)
