@@ -49,7 +49,7 @@ void getSystemMem(char totalRAM[255],char availRAM[255],char totalSwap[255],char
 
 
 
-
+/* Function to get second word on line from ouptut of fgets */
 char *extract(char *buffer)
 {
     strtok(buffer, " ");
