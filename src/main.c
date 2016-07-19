@@ -45,7 +45,7 @@ int main(){
     fclose(fp);
     
     /* Read system Disk info and extrapolate */
-   // getSystemDisk(totalDisk, availDisk);
+    getSystemDisk(totalDisk, availDisk);
 
     /* Read system Ram info and extrapolate */
     getSystemMem(totalRAM,availRAM,totalSwap,availSwap);
@@ -133,9 +133,9 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 1,2,"Disk");
     mvwprintw(win, 1,15,"|");
     mvwprintw(win, 1, 17,"Free:");
-    //mvwprintw(win, 1, 23,"%s",availDisk);
+    mvwprintw(win, 1, 23,"%s",availDisk);
     mvwprintw(win, 1, 29, "/");
-    //mvwprintw(win, 1, 31,"%s",totalDisk);
+    mvwprintw(win, 1, 31,"%s",totalDisk);
 
     mvwprintw(win, 2, 2, "Swap");
     mvwprintw(win, 2, 15, "|");

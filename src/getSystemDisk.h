@@ -20,13 +20,12 @@ void getSystemDisk(char total[255], char avail[255])
     FILE *fp;
     bool found=false;
     /* command to be executed */
-    char command[]="df -h > lib1/disk.txt";
+    char command[]="df -h > disk.txt";
     char buffer[255];
     char buffer2[255];
-    system("mkdir lib1");
     system(command);
     //fp=fopen("/home/snimmagadda/Documents/TUI/lib1/disk.txt", "r");
-    fp=fopen("/home/rl/Documents/TUI/lib1/disk.txt", "r");
+    fp=fopen("/home/rl/TUI/disk.txt", "r");
     /* get the line with the total system disk info */
     while(fgets(buffer, 255, fp))
     {
