@@ -25,7 +25,7 @@ void getSystemDisk(char total[255], char avail[255])
     char buffer2[255];
     system(command);
     //fp=fopen("/home/snimmagadda/Documents/TUI/lib1/disk.txt", "r");
-    fp=fopen("/home/rl/TUI/disk.txt", "r");
+    fp=fopen("/home/rl/Documents/TUI/disk.txt", "r");
     /* get the line with the total system disk info */
     while(fgets(buffer, 255, fp))
     {
