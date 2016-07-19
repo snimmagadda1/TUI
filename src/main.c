@@ -78,7 +78,7 @@ int main(){
     displayNetworkWindow(my_wins[1], iface, ipaddress, gateway, netmask, dns);
     displayBottomWindow(my_wins[2], totalDisk, availDisk, totalRAM, availRAM, totalSwap, availSwap);
     attron(A_REVERSE);
-    mvprintw(row-2,5,"[F1 Exit]");
+    mvprintw(row-2,5,"[F1 Login]");
     attroff(A_REVERSE);
     update_panels();
     doupdate();
