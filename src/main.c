@@ -38,14 +38,14 @@ int main(){
     
     /* read network information file and extrapolate useful information */
     FILE *fp;
-    fp = fopen("/home/snimmagadda/Documents/TUI/lib1/interfaces","r");
-   // fp = fopen("/etc/network/interfaces","r");
+    //fp = fopen("/home/snimmagadda/Documents/TUI/lib1/interfaces","r");
+    fp = fopen("/etc/network/interfaces","r");
     char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255], totalDisk[255], availDisk[255], totalRAM[255], totalSwap[255], availRAM[255], availSwap[255];
     getNetworkInfo(fp, iface, ipaddress, netmask, gateway, dns);     
     fclose(fp);
     
     /* Read system Disk info and extrapolate */
-    getSystemDisk(totalDisk, availDisk);
+   // getSystemDisk(totalDisk, availDisk);
 
     /* Read system Ram info and extrapolate */
     getSystemMem(totalRAM,availRAM,totalSwap,availSwap);
@@ -133,9 +133,9 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 1,2,"Disk");
     mvwprintw(win, 1,15,"|");
     mvwprintw(win, 1, 17,"Free:");
-    mvwprintw(win, 1, 23,"%s",availDisk);
+    //mvwprintw(win, 1, 23,"%s",availDisk);
     mvwprintw(win, 1, 29, "/");
-    mvwprintw(win, 1, 31,"%s",totalDisk);
+    //mvwprintw(win, 1, 31,"%s",totalDisk);
 
     mvwprintw(win, 2, 2, "Swap");
     mvwprintw(win, 2, 15, "|");
