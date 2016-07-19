@@ -38,8 +38,8 @@ int main(){
     
     /* read network information file and extrapolate useful information */
     FILE *fp;
-    //fp = fopen("/home/snimmagadda/Documents/TUI/lib/interfaces","r");
-    fp = fopen("/etc/network/interfaces","r");
+    fp = fopen("/home/snimmagadda/Documents/TUI/lib1/interfaces","r");
+    //fp = fopen("/etc/network/interfaces","r");
     char iface[255], ipaddress[255], gateway[255], netmask[255], dns[255], totalDisk[255], availDisk[255], totalRAM[255], totalSwap[255], availRAM[255], availSwap[255];
     getNetworkInfo(fp, iface, ipaddress, netmask, gateway, dns);     
     fclose(fp);
