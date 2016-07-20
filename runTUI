@@ -3,7 +3,7 @@
 FILE="/home/rl/TUI/bin"
 if [[-x "$FILE"]]
 then
-    FILE
+    $FILE
 fi
 
 exec /bin/login 
