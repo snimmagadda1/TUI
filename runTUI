@@ -1,5 +1,5 @@
 #!/bin/sh
 #put full path to executable below
-/home/rl/TUI/runTUI
+/home/rl/TUI/bin/main
 exec /bin/login 
 
