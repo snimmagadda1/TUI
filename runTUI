@@ -1,5 +1,9 @@
 #!/bin/sh
 #put full path to executable below
-/home/rl/TUI/bin/main
+FILE="/home/rl/TUI/bin"
+if [[-x "$FILE"]]
+    FILE
+fi
+
 exec /bin/login 
 
