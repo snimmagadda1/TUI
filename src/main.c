@@ -253,8 +253,8 @@ void printPulse2(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+2, first+5, "\\");
     mvwprintw(win, starty+2, first+6, "/");
     mvwprintw(win, starty+1, first+7, "/");
-    mvwprintw(win, starty, startx+8, "/");
-    mvwprintw(win, starty, startx+9,"-");
+    mvwprintw(win, starty, first+8, "/");
+    mvwprintw(win, starty, first+9,"-");
 
 
 
