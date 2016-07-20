@@ -53,8 +53,9 @@ int main(){
     start_color();
     init_pair(1, COLOR_BLACK, COLOR_GREEN); 
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
-    init_pair(3, COLOR_WHITE, COLOR_WHITE);
-    
+    init_pair(3, COLOR_WHITE, COLOR_GREEN);
+    init_pair(4, COLOR_GREEN, COLOR_WHITE);
+
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
@@ -101,6 +102,7 @@ void getDimensions(WINDOW *win, int *row, int *col, int *middleRow, int *middleC
     /* function to update the network window with appropriate values */
 void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gateway, char *netmask, char* dns)
 {
+    wattron(win, COLOR_PAIR(4));
     int begy, begx, endy, endx;
     getbegyx(win, begy, begx);
     getmaxyx(win, endy, endx);
@@ -115,17 +117,20 @@ void displayNetworkWindow(WINDOW *win, char *iface, char *ipaddress, char *gatew
     mvwprintw(win, 6, 15, "%s", gateway);
     mvwprintw(win, 7, 1, "DNS:");
     mvwprintw(win, 7, 15, "%s", dns);
+    wattron(win, COLOR_PAIR(4));
     wrefresh(win);
 }
     /* function to update the system window with appropriate values */
 void displaySystemWindow(WINDOW *win)
 {
+    wattron(win, COLOR_PAIR(3));
     int endy, endx;
     getmaxyx(win, endy, endx);
     mvwprintw(win, 1, (endx-strlen("Pulse Information"))/2, "Pulse Information");
     mvwprintw(win, 3, 1, "Pulse Appliance: v1.0.0-beta");
     printAsciiLogo(win, 5, 1);
     mvwprintw(win, 5, 16,"License: Std.");
+    wattroff(win, COLOR_PAIR(3));
     wrefresh(win);
 }
     /* function to update the bottom centered window */
