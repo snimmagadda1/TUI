@@ -22,7 +22,7 @@ void displaySystemWindow(WINDOW *win);
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255],char availSwap[255]);
 void printAsciiLogo(WINDOW *win, int starty, int startx);
 void printPulse(WINDOW *win, int starty, int startx);
-
+void printPulse2(WINDOW *win, int starty, int startx);
 
 int main(){
     
@@ -151,7 +151,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 3, 34, "/");
     mvwprintw(win, 3, 36, "%s kB", totalRAM);
     
-    printPulse(win, 6,2);
+    printPulse2(win, 6,2);
     wrefresh(win);
 }
 
@@ -225,3 +225,29 @@ void printPulse(WINDOW *win, int starty, int startx)
 
     wrefresh(win);
 }
+
+
+void printPulse2(WINDOW *win, int starty, int startx)
+{
+    int maxY, maxX;
+    getmaxyx(win,maxY,maxX);
+    int width = maxX-startx;
+    int first = width/2 - 5;
+    int second = width/2 +5;
+    int i;
+    
+    for(int i=0; i<=first; i++)
+    {
+        mvwprintw(win, starty, startx+i, "-");
+    }
+    for(int i=second; i<maxX-4; i++)
+    {
+        mvwprintw(win,starty, startx+i, "-");
+    }
+
+
+
+
+
+}
+
