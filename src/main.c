@@ -236,11 +236,11 @@ void printPulse2(WINDOW *win, int starty, int startx)
     int second = width/2 +5;
     int i;
     
-    for(int i=0; i<=first; i++)
+    for( i=0; i<=first; i++)
     {
         mvwprintw(win, starty, startx+i, "-");
     }
-    for(int i=second; i<maxX-4; i++)
+    for( i=second; i<maxX-4; i++)
     {
         mvwprintw(win,starty, startx+i, "-");
     }
