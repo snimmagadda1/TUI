@@ -2,6 +2,7 @@
 #put full path to executable below
 FILE="/home/rl/TUI/bin"
 if [[-x "$FILE"]]
+then
     FILE
 fi
 
