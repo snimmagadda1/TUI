@@ -3,7 +3,6 @@
 #include <ncurses.h>
 #include <string.h>
 #include <panel.h>
-#include "executeShell.h"
 #include "drawBorders.h"
 #include "getNetworkInfo.h"
 #include "getSystemDisk.h"
@@ -22,7 +21,7 @@ void displaySystemWindow(WINDOW *win);
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255],char availSwap[255]);
 void printAsciiLogo(WINDOW *win, int starty, int startx);
 void printPulse(WINDOW *win, int starty, int startx);
-void printPulse2(WINDOW *win, int starty, int startx);
+
 
 int main(){
     
@@ -151,7 +150,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 3, 34, "/");
     mvwprintw(win, 3, 36, "%s kB", totalRAM);
     
-    printPulse2(win, 6,2);
+    printPulse(win, 6,2);
     wrefresh(win);
 }
 
@@ -198,12 +197,12 @@ void printAsciiLogo(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+7, startx+11,"*");
     mvwprintw(win, starty+7, startx+13,"*");
 }
-/* function to print the pulse heartbeat */
+
+/*
 void printPulse(WINDOW *win, int starty, int startx)
 {
     int i;
-    /* left horizontal line */
-    for(i=0;i<26;i++)
+      for(i=0;i<26;i++)
     {
         mvwprintw(win, starty, startx+i,"-");
         mvwprintw(win, starty, startx+38+i,"-");
@@ -211,7 +210,6 @@ void printPulse(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty, startx+38+25+1,"-");
     mvwprintw(win, starty, startx+38+25+2,"-");
 
-    /*make up and down*/
     mvwprintw(win, starty, startx+26, "/");
     mvwprintw(win, starty-1, startx+27,"/");
     mvwprintw(win, starty-1, startx+29,"\\");
@@ -224,10 +222,10 @@ void printPulse(WINDOW *win, int starty, int startx)
     mvwprintw(win,starty,startx+37,"-");
 
     wrefresh(win);
-}
+}*/
 
 
-void printPulse2(WINDOW *win, int starty, int startx)
+void printPulse(WINDOW *win, int starty, int startx)
 {
     int maxY, maxX;
     getmaxyx(win,maxY,maxX);
@@ -255,8 +253,8 @@ void printPulse2(WINDOW *win, int starty, int startx)
     mvwprintw(win, starty+1, first+7, "/");
     mvwprintw(win, starty, first+8, "/");
     mvwprintw(win, starty, first+9,"-");
-
-
+    mvwprintw(win, starty, first+10, "-");
+    mvwprintw(win, starty, first+11,"-");
 
 }
 
