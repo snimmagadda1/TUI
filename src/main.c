@@ -59,15 +59,19 @@ int main(){
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
     int rowStart = getmaxy(my_wins[0]);                                                     /* For later formatting */
+    attron(COLOR_PAIR(4));
     mvprintw(rowStart+3, (col -strlen("System Information"))/2,"System Information");       /* Print title of Window */
     mvprintw(rowStart+2, (col -strlen("pulse.rlpulse.net"))/2, "pulse.rlpulse.net");
+    attroff(COLOR_PAIR(4));
     rowStart+=4;
     my_wins[2] = newwin((row-rowStart)-2, col-10,rowStart, 5);
     my_panels[0] = new_panel(my_wins[0]);
     my_panels[1] = new_panel(my_wins[1]);
     my_panels[2] = new_panel(my_wins[2]);
+    wattron(my_wins[2],COLOR_PAIR(4));
     drawBorders(my_wins[2]);
-    
+    wattroff(my_wins[2], COLOR_PAIR(4));
+
     /* Add color to window backgrounds */
     wbkgd(my_wins[0], COLOR_PAIR(1));
     wbkgd(my_wins[1], COLOR_PAIR(2));
@@ -132,6 +136,7 @@ void displaySystemWindow(WINDOW *win)
     /* function to update the bottom centered window */
 void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], char totalRAM[255], char availRAM[255], char totalSwap[255], char availSwap[255])
 {
+    wattron(win, COLOR_PAIR(4));
     mvwprintw(win, 1,2,"Disk");
     mvwprintw(win, 1,15,"|");
     mvwprintw(win, 1, 17,"Free:");
@@ -152,7 +157,7 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 3, 23, "%s kB", availRAM);
     mvwprintw(win, 3, 36, "/");
     mvwprintw(win, 3, 39, "%s kB", totalRAM);
-    wattron(win,COLOR_PAIR(4));
+   
     printPulse(win, 6,2);
     wattroff(win, COLOR_PAIR(4));
     wrefresh(win);
