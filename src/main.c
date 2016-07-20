@@ -135,22 +135,22 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 1,15,"|");
     mvwprintw(win, 1, 17,"Free:");
     mvwprintw(win, 1, 23,"%s",availDisk);
-    mvwprintw(win, 1, 29, "/");
-    mvwprintw(win, 1, 31,"%s",totalDisk);
+    mvwprintw(win, 1, 31, "/");
+    mvwprintw(win, 1, 34,"%s",totalDisk);
 
     mvwprintw(win, 2, 2, "Swap");
     mvwprintw(win, 2, 15, "|");
     mvwprintw(win, 2, 17, "Free:");
     mvwprintw(win, 2, 23,"%s kB", availSwap);
-    mvwprintw(win, 2, 34, "/");
-    mvwprintw(win, 2, 36,"%s kB", totalSwap);
+    mvwprintw(win, 2, 36, "/");
+    mvwprintw(win, 2, 39,"%s kB", totalSwap);
     
     mvwprintw(win, 3, 2, "Memory");
     mvwprintw(win, 3, 15, "|");
     mvwprintw(win, 3, 17, "Free:");
     mvwprintw(win, 3, 23, "%s kB", availRAM);
-    mvwprintw(win, 3, 34, "/");
-    mvwprintw(win, 3, 36, "%s kB", totalRAM);
+    mvwprintw(win, 3, 36, "/");
+    mvwprintw(win, 3, 39, "%s kB", totalRAM);
     
     printPulse(win, 6,2);
     wrefresh(win);
