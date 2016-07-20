@@ -54,7 +54,7 @@ int main(){
     init_pair(1, COLOR_BLACK, COLOR_GREEN); 
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
     init_pair(3, COLOR_WHITE, COLOR_GREEN);
-
+    init_pair(4, COLOR_GREEN, COLOR_BLACK);
     /* Initialize the top left and right windows as well as bottom middle window*/
     my_wins[0] = newwin((row*.65)-5, (col*.5)-5,1,5);
     my_wins[1] = newwin((row*.65)-5, (col*.5)-5,1,middleCol);
@@ -152,8 +152,9 @@ void displayBottomWindow(WINDOW *win, char totalDisk[255], char availDisk[255], 
     mvwprintw(win, 3, 23, "%s kB", availRAM);
     mvwprintw(win, 3, 36, "/");
     mvwprintw(win, 3, 39, "%s kB", totalRAM);
-    
+    wattron(win,COLOR_PAIR(4));
     printPulse(win, 6,2);
+    wattroff(win, COLOR_PAIR(4));
     wrefresh(win);
 }
 
