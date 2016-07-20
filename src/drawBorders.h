@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+
+// from wwww.viget.com/articles/c-games-in-ncurses-using-multiple-windows + tldp.org/HOWTO/NCURSES-Programming-HOWTO
 void drawBorders( WINDOW *win)
 {   
     int x, y, i;

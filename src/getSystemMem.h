@@ -26,22 +26,22 @@ void getSystemMem(char totalRAM[255],char availRAM[255],char totalSwap[255],char
         if(strstr(buffer,"MemTotal") != NULL)
         {
            strcpy(totalRAM,extract(buffer));
-           printf("%s\n", totalRAM);
+          // printf("%s\n", totalRAM);
         }
         if(strstr(buffer,"MemFree") != NULL)
         {
             strcpy(availRAM, extract(buffer));
-            printf("%s\n",availRAM);
+           // printf("%s\n",availRAM);
         }
         if(strstr(buffer,"SwapTotal") != NULL)
         {
             strcpy(totalSwap, extract(buffer));
-            printf("%s\n", totalSwap);
+            //printf("%s\n", totalSwap);
         }
         if(strstr(buffer,"SwapFree") != NULL)
         {
             strcpy(availSwap, extract(buffer));
-            printf("%s\n",availSwap);
+           // printf("%s\n",availSwap);
         }
     }
     fclose(fp);
