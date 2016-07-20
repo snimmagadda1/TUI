@@ -236,7 +236,7 @@ void printPulse2(WINDOW *win, int starty, int startx)
     int second = width/2 +5;
     int i;
     
-    for( i=0; i<=first; i++)
+    for( i=0; i<=first-2; i++)
     {
         mvwprintw(win, starty, startx+i, "-");
     }
@@ -245,7 +245,16 @@ void printPulse2(WINDOW *win, int starty, int startx)
         mvwprintw(win,starty, startx+i, "-");
     }
 
-
+    mvwprintw(win, starty, first, "/");
+    mvwprintw(win, starty-1, first+1,"/");
+    mvwprintw(win, starty-1, first+2, "\\");
+    mvwprintw(win, starty, first+3, "\\");
+    mvwprintw(win, starty+1, first+4,"\\");
+    mvwprintw(win, starty+2, first+5, "\\");
+    mvwprintw(win, starty+2, first+6, "/");
+    mvwprintw(win, starty+1, first+7, "/");
+    mvwprintw(win, starty, startx+8, "/");
+    mvwprintw(win, starty, startx+9,"-");
 
 
 
