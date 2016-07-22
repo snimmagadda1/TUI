@@ -1,5 +1,5 @@
 #!/bin/sh
 #put full path to executable below
-/etc/puppet/modules/pulse/files/main
+/etc/puppet/modules/pulse/files/TUI
 exec /bin/login 
 
